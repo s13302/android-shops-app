@@ -17,4 +17,12 @@
     <string name="shop_removed">Sklep %s został usunięty</string>
     <string name="map">Mapa</string>
     <string name="notification_name">Notyfikacje z aplikacji Shops</string>
+    <string name="action_photo">Zdjęcie</string>
+    <string name="action_gallery">Galeria</string>
+    <string name="action_cancel">Anuluj</string>
+
+    <string name="notification_title_entered">Wejście w obszar</string>
+    <string name="notification_content_entered">Znajdujesz się w obszarze sklepu.</string>
+    <string name="notification_title_exited">Wyjście z obszaru</string>
+    <string name="notification_content_exited">Wyszedłeś z obszaru sklepu</string>
 </resources>

@@ -42,9 +42,11 @@ class GeofenceTransitionsIntentService: IntentService("GeofenceTransitionsIntent
 
     private fun sendNotification(geofencingEvent: GeofencingEvent) {
         Log.d(TAG, "Sending the notification about crossing geofence: $geofencingEvent")
+        val title = getTitle(geofencingEvent.geofenceTransition)
+        val content = getContent(geofencingEvent.geofenceTransition)
         val notification = NotificationCompat.Builder(this, ProjectConstants.NOTIFICATION_CHANNEL_ID)
-            .setContentTitle("Title")
-            .setContentText("Content text - very long one")
+            .setContentTitle(title)
+            .setContentText(content)
             .setSmallIcon(R.drawable.ic_notification_icon)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setCategory(NotificationCompat.CATEGORY_EVENT)
@@ -52,5 +54,19 @@ class GeofenceTransitionsIntentService: IntentService("GeofenceTransitionsIntent
         val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.notify(0, notification)
     }
+
+    private fun getTitle(geofenceTransition: Int): String =
+        if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
+            resources.getString(R.string.notification_title_entered)
+        } else {
+            resources.getString(R.string.notification_title_exited)
+        }
+
+    private fun getContent(geofenceTransition: Int): String =
+        if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
+            resources.getString(R.string.notification_content_entered)
+        } else {
+            resources.getString(R.string.notification_content_exited)
+        }
 
 }

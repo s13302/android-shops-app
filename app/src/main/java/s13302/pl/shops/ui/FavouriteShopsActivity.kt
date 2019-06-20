@@ -156,25 +156,11 @@ class FavouriteShopsActivity : AppCompatActivity(), DataListener<Shop> {
     }
 
     private fun add(shop: Shop, success: () -> Unit, failure: (error: String) -> Unit) {
-        val geofenceEnter = buildGeofenceEnter(shop)
-        val geofenceExit = buildGeofenceExit(shop)
-        if (geofenceEnter != null && geofenceExit != null) {
+        val geofence = buildGeofence(shop)
+        if (geofence != null) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 geofencingClient
-                    .addGeofences(buildGeofencingRequest(geofenceEnter), geofencePendingIntent)
-                    .addOnSuccessListener {
-                        success()
-                    }
-                    .addOnFailureListener {
-                        if (it is ApiException) {
-                            val message = GeofenceStatusCodes.getStatusCodeString(it.statusCode)
-                            failure("$message, number: ${it.statusCode}")
-                        } else {
-                            Log.e(TAG, "Error:", it)
-                        }
-                    }
-                geofencingClient
-                    .addGeofences(buildGeofencingRequest(geofenceExit), geofencePendingIntent)
+                    .addGeofences(buildGeofencingRequest(geofence), geofencePendingIntent)
                     .addOnSuccessListener {
                         success()
                     }
@@ -196,25 +182,17 @@ class FavouriteShopsActivity : AppCompatActivity(), DataListener<Shop> {
 
     private fun buildGeofencingRequest(geofence: Geofence): GeofencingRequest {
         return GeofencingRequest.Builder()
-            .setInitialTrigger(0)
+            .setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
             .addGeofences(listOf(geofence))
             .build()
     }
 
-    private fun buildGeofenceEnter(shop: Shop): Geofence? {
-        return buildGeofence(shop, Geofence.GEOFENCE_TRANSITION_ENTER)
-    }
-
-    private fun buildGeofenceExit(shop: Shop): Geofence? {
-        return buildGeofence(shop, Geofence.GEOFENCE_TRANSITION_EXIT)
-    }
-
-    private fun buildGeofence(shop: Shop, transitionType: Int): Geofence? {
+    private fun buildGeofence(shop: Shop): Geofence? {
         if (shop.lat != null && shop.lng != null) {
             return Geofence.Builder()
                 .setRequestId(shop.shopId)
                 .setCircularRegion(shop.lat, shop.lng, ProjectConstants.DEFAULT_GEOFENCE_RADIUS)
-                .setTransitionTypes(transitionType)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_EXIT or Geofence.GEOFENCE_TRANSITION_ENTER)
                 .setExpirationDuration(Geofence.NEVER_EXPIRE)
                 .build()
         }

@@ -21,6 +21,8 @@ class ProjectConstants {
         const val DEFAULT_GEOFENCE_RADIUS = 500f
 
         const val NOTIFICATION_CHANNEL_ID = "shopsChannel"
+        const val DEFAULT_BITMAP_WIDTH = 640
+        const val DEFAULT_BITMAP_HEIGHT = 480
     }
 
 }
