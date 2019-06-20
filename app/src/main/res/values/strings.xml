@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Shops</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="email">Adres E-Mail</string>
+    <string name="password">Hasło</string>
+    <string name="do_register">Zarejestruj</string>
+    <string name="select_photo">Wybierz zdjęcie</string>
+    <string name="login_screen_link">Już posiadasz konto?</string>
+    <string name="has_no_account">Nie posiadam konta</string>
+    <string name="do_login">Zaloguj</string>
+    <string name="sign_out">Wyloguj</string>
+    <string name="add_shop">Dodaj sklep</string>
+    <string name="shop_name">Nazwa sklepu</string>
+    <string name="shop_type">Typ sklepu</string>
+    <string name="save">Zapisz</string>
+    <string name="action_undo">Cofnij</string>
+    <string name="shop_removed">Sklep %s został usunięty</string>
+    <string name="map">Mapa</string>
+    <string name="notification_name">Notyfikacje z aplikacji Shops</string>
+</resources>

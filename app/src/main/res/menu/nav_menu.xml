@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/mnMap"
+          android:title="@string/map"
+          android:icon="@drawable/ic_map"
+          app:showAsAction="ifRoom" />
+    <item android:id="@+id/mnAddShop"
+          android:title="@string/add_shop"
+          android:icon="@drawable/ic_add"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/mnSignOut"
+          android:title="@string/sign_out"
+          android:icon="@drawable/ic_exit"
+          app:showAsAction="ifRoom"/>
+
+</menu>

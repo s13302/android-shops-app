@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.EditShopActivity">
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etShopName"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp" android:layout_marginTop="32dp" android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp" android:hint="@string/shop_name"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etShopType"
+            app:layout_constraintStart_toStartOf="@+id/etShopName" app:layout_constraintEnd_toEndOf="@+id/etShopName"
+            app:layout_constraintTop_toBottomOf="@+id/etShopName" android:layout_marginTop="16dp"
+            android:hint="@string/shop_type"/>
+    <Button
+            android:text="@string/select_photo"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/circle_button"
+            android:id="@+id/btnSelectPhoto" app:layout_constraintStart_toStartOf="@+id/etShopType"
+            app:layout_constraintEnd_toEndOf="@+id/etShopType" app:layout_constraintTop_toBottomOf="@+id/etShopType"
+            android:layout_marginTop="16dp"/>
+    <Button
+            android:text="@string/save"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/btnSave"
+            app:layout_constraintTop_toBottomOf="@+id/btnSelectPhoto"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@+id/etShopType"
+            app:layout_constraintStart_toStartOf="@+id/etShopType" app:layout_constraintVertical_bias="1.0"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSelectPhoto"
+            app:layout_constraintTop_toTopOf="@+id/btnSelectPhoto"
+            app:layout_constraintEnd_toEndOf="@+id/btnSelectPhoto"
+            app:layout_constraintStart_toStartOf="@+id/btnSelectPhoto" android:id="@+id/ciShopPhoto"/>
+
+    <fragment
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:layout_editor_absoluteX="-16dp" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnSave" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/ciShopPhoto" android:id="@+id/mMap"/>
+
+</android.support.constraint.ConstraintLayout>
